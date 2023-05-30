@@ -32,7 +32,7 @@ import com.dicoding.myulamacompose.R
 @Composable
 @Preview
 fun AboutMeScreen(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     val myPhoto = painterResource(id = R.drawable.my_photo)
     val name = stringResource(id = R.string.name)

@@ -38,14 +38,14 @@ import com.dicoding.myulamacompose.vm.VMFactory
 
 @Composable
 fun DetailUlamaScreen(
+    modifier: Modifier = Modifier,
+    idUlama: String,
+    navigateUp: () -> Unit,
     viewModel: DetailUlamaVM = viewModel(
         factory = VMFactory(
             UlamaRepository(),
         ),
-    ),
-    idUlama: String,
-    navigateUp: () -> Unit,
-    modifier: Modifier = Modifier
+    )
 ) {
     val dataUlama by viewModel.getDataUlama(idUlama).collectAsState()
 
@@ -91,11 +91,11 @@ fun DetailUlamaScreen(
                     .padding(16.dp)
                     .fillMaxSize()
             )
-            Spacer(modifier = Modifier.padding(16.dp))
+            Spacer(modifier = Modifier.padding(12.dp))
             Text(text = dataUlama.name,
-                fontSize = 24.sp,
+                fontSize = 22.sp,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.h4.copy(
+                style = MaterialTheme.typography.h3.copy(
                     fontWeight = FontWeight.ExtraBold
                 ),
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -106,7 +106,7 @@ fun DetailUlamaScreen(
                 textAlign = TextAlign.Justify,
                 style = MaterialTheme.typography.body1.copy(
                     fontWeight = FontWeight.Normal,
-                    fontStyle = FontStyle.Italic
+                    fontStyle = FontStyle.Normal
                 ),
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
