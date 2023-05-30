@@ -1,3 +1,5 @@
+@file:Suppress("NAME_SHADOWING")
+
 package com.dicoding.myulamacompose.ui.screen
 
 import androidx.compose.animation.*
@@ -30,13 +32,14 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
+
 fun HomeScreen(
+    modifier: Modifier = Modifier,
+    navigateToDetail: (String) -> Unit,
     viewModel: HomeVM = viewModel(factory = VMFactory(
         UlamaRepository()
     )
-    ),
-    navigateToDetail: (String) -> Unit,
-    modifier: Modifier = Modifier
+    )
 ) {
     val groupUlama by viewModel.groupUlama.collectAsState()
     val query by viewModel.query

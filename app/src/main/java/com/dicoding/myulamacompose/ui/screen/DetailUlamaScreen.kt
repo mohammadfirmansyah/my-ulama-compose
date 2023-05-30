@@ -47,7 +47,7 @@ fun DetailUlamaScreen(
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val waifuData by viewModel.getDataUlama(idUlama).collectAsState()
+    val dataUlama by viewModel.getDataUlama(idUlama).collectAsState()
 
     Scaffold(
         topBar = {
@@ -70,8 +70,8 @@ fun DetailUlamaScreen(
                     Text(
                         text = stringResource(id = R.string.detail),
                         style = MaterialTheme.typography.h1,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
                         color = MaterialTheme.colors.primary
                     )
                 }
@@ -85,14 +85,14 @@ fun DetailUlamaScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            AsyncImage(model = waifuData.photoUrl, contentDescription = null,
+            AsyncImage(model = dataUlama.photoUrl, contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxSize()
             )
             Spacer(modifier = Modifier.padding(16.dp))
-            Text(text = waifuData.name,
+            Text(text = dataUlama.name,
                 fontSize = 24.sp,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h4.copy(
@@ -101,7 +101,7 @@ fun DetailUlamaScreen(
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
             Spacer(modifier = Modifier.padding(16.dp))
-            Text(text = waifuData.description,
+            Text(text = dataUlama.description,
                 fontSize = 16.sp,
                 textAlign = TextAlign.Justify,
                 style = MaterialTheme.typography.body1.copy(
