@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyUlamaCompose</string>
+    <string name="back">Kembali</string>
+    <string name="profile_image">Foto Profil</string>
+    <string name="search">Cari Ulama</string>
+    <string name="detail">Biografi Ulama</string>
+    <string name="home">Home</string>
+    <string name="about_me">Tentang saya</string>
+    <string name="name">Mohammad Firman Syah</string>
+    <string name="email">a151dkx4002@bangkit.academy</string>
+</resources>
