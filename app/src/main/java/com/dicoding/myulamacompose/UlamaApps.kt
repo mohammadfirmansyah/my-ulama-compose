@@ -1,5 +1,7 @@
 package com.dicoding.myulamacompose
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -81,25 +83,30 @@ private fun BottomBar(
     navController: NavController,
     modifier: Modifier = Modifier,
 ) {
-    BottomNavigation(
+    val navigationItems = listOf(
+        NavItem(
+            title = stringResource(R.string.home),
+            icon = Icons.Default.Home,
+            screen = Screen.Home
+        ),
+        NavItem(
+            title = stringResource(R.string.about_me),
+            icon = Icons.Default.AccountCircle,
+            screen = Screen.AboutMe
+        ),
+    )
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    Box(
         modifier = modifier
     ) {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        val navigationItems = listOf(
-            NavItem(
-                title = stringResource(R.string.home),
-                icon = Icons.Default.Home,
-                screen = Screen.Home
-            ),
-            NavItem(
-                title = stringResource(R.string.about_me),
-                icon = Icons.Default.AccountCircle,
-                screen = Screen.AboutMe
-            ),
-        )
-        BottomNavigation {
-            navigationItems.map { item ->
+        BottomNavigation(
+            modifier = Modifier.fillMaxWidth(),
+            backgroundColor = MaterialTheme.colors.primary
+        ) {
+            navigationItems.forEach { item ->
                 BottomNavigationItem(
                     icon = {
                         Icon(
